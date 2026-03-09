@@ -40,28 +40,28 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-16 bg-background">
+    <section id="about" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className={`section-title text-center ${isRtl ? "font-arabic" : "font-english"}`}>
+        <h2 className="section-title text-center mb-4">
           {t("Who We Are", "من نحن")}
         </h2>
-        <p className="section-subtitle text-center max-w-3xl mx-auto">
+        <p className="section-subtitle text-center max-w-3xl mx-auto mb-16">
           {t(
-            "A specialized Egyptian team providing cutting-edge automation and digital solutions to businesses across the Gulf region and beyond",
-            "فريق مصري متخصص يقدم حلول أتمتة وحلول رقمية متطورة للشركات في منطقة الخليج وخارجها"
+            "A specialized team delivering cutting-edge automation and digital solutions to businesses across the region",
+            "فريق متخصص يقدم حلول أتمتة وحلول رقمية متطورة للشركات في المنطقة"
           )}
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-card border border-border/60 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+              className="flex flex-col items-center bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
             >
               <div className="text-primary mb-3">{stat.icon}</div>
-              <span className="text-3xl font-bold text-foreground">{stat.value}</span>
-              <span className="text-sm text-muted-foreground mt-1">
+              <span className="text-3xl md:text-4xl font-bold text-foreground">{stat.value}</span>
+              <span className="text-xs md:text-sm text-muted-foreground mt-2 text-center">
                 {isRtl ? stat.label.ar : stat.label.en}
               </span>
             </div>
@@ -69,19 +69,19 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Value cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {values.map((value, index) => (
             <div
               key={index}
-              className="bg-card border border-border/60 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+              className="bg-card border border-border rounded-lg p-7 hover:border-primary/50 hover:shadow-md transition-all"
             >
-              <div className="bg-primary/10 text-primary w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+              <div className="bg-primary/10 text-primary w-12 h-12 rounded-lg flex items-center justify-center mb-5">
                 {value.icon}
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-lg font-bold text-foreground mb-3">
                 {isRtl ? value.title.ar : value.title.en}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {isRtl ? value.desc.ar : value.desc.en}
               </p>
             </div>

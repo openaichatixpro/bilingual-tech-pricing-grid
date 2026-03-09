@@ -10,51 +10,48 @@ const Header: React.FC = () => {
   const { t, toggleLanguage, language, isRtl } = useLanguage();
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto py-4 px-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src={logo} alt="Tech Services Logo" className="h-10 w-10 object-contain" />
-            <h1 className="text-xl font-bold">
-              {t("Ahmed Mo Kireldin", "أحمد محمد كيرالدين")}
+        <div className="flex items-center justify-between gap-4">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
+            <img src={logo} alt="Tech Services Logo" className="h-8 w-8 object-contain" />
+            <h1 className="text-lg font-bold text-foreground hidden sm:block">
+              {t("Ahmed Mo", "أحمد محمد")}
             </h1>
           </Link>
 
-          <div className="flex flex-col md:flex-row gap-4 md:items-center mt-4 md:mt-0">
-            <div className="flex gap-4">
-              <a href="mailto:ahmedmokireldin@gmail.com" className="contact-link">
-                <Mail size={18} />
-                <span className="hidden md:inline">ahmedmokireldin@gmail.com</span>
+          <div className="flex items-center gap-3 ml-auto">
+            <div className="hidden lg:flex gap-3">
+              <a href="mailto:ahmedmokireldin@gmail.com" className="contact-link text-sm hover:text-primary">
+                <Mail size={16} />
+                <span className="hidden xl:inline">Email</span>
               </a>
-              <a href="tel:+201004101309" className="contact-link">
-                <Phone size={18} />
-                <span className="hidden md:inline">+201004101309</span>
-              </a>
-              <a href="https://wa.me/201006334062" target="_blank" rel="noopener noreferrer" className="contact-link">
-                <MessageSquare size={18} />
-                <span className="hidden md:inline">+201006334062</span>
+              <a href="tel:+201004101309" className="contact-link text-sm hover:text-primary">
+                <Phone size={16} />
+                <span className="hidden xl:inline">Call</span>
               </a>
             </div>
             
-            <Link to="/data">
-              <Button variant="ghost" className="flex items-center gap-1">
-                <Database size={16} />
-                <span>{t("Data Store", "متجر البيانات")}</span>
+            <Link to="/data" className="hidden md:block">
+              <Button variant="ghost" size="sm" className="flex items-center gap-1 text-sm">
+                <Database size={14} />
+                <span>{t("Data", "البيانات")}</span>
               </Button>
             </Link>
-            <Link to="/courses">
-              <Button variant="ghost" className="flex items-center gap-1">
-                <GraduationCap size={16} />
+            <Link to="/courses" className="hidden md:block">
+              <Button variant="ghost" size="sm" className="flex items-center gap-1 text-sm">
+                <GraduationCap size={14} />
                 <span>{t("Courses", "الكورسات")}</span>
               </Button>
             </Link>
             <Button 
               onClick={toggleLanguage} 
-              variant="outline" 
-              className="ml-2 flex items-center gap-1"
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-1 text-sm"
             >
-              <Globe size={16} />
-              <span>{language === "en" ? "العربية" : "English"}</span>
+              <Globe size={14} />
+              <span className="hidden sm:inline">{language === "en" ? "العربية" : "EN"}</span>
             </Button>
           </div>
         </div>

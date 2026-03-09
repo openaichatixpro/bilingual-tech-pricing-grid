@@ -62,19 +62,10 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				tech: {
-					blue: '#4e54c8',
-					purple: '#8f94fb',
-					light: '#f5f7ff',
-					dark: '#2c2f4a',
-					accent: '#ff6b6b'
 				}
 			},
 			fontFamily: {
-				sans: ['Poppins', 'Tajawal', 'sans-serif'],
-				arabic: ['Tajawal', 'sans-serif'],
-				english: ['Poppins', 'sans-serif']
+				sans: ['Poppins', 'Tajawal', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
