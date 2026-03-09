@@ -180,47 +180,37 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-16 bg-gray-50">
+    <section id="services" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className={`section-title text-center ${isRtl ? 'font-arabic' : 'font-english'}`}>
+        <h2 className="section-title text-center mb-4">
           {t("Our Services", "خدماتنا")}
         </h2>
-        <p className="section-subtitle text-center">
+        <p className="section-subtitle text-center mb-16">
           {t(
-            "Comprehensive technical solutions for your digital business needs",
-            "حلول تقنية شاملة لاحتياجات أعمالك الرقمية"
+            "Complete solutions for your digital transformation",
+            "حلول شاملة لتحول رقمي كامل"
           )}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.id} className="service-card animate-fade-in overflow-hidden">
-              {service.image && (
-                <div className="h-40 overflow-hidden -mx-6 -mt-6 mb-4">
-                  <img 
-                    src={service.image} 
-                    alt={isRtl ? service.title.ar : service.title.en}
-                    className="w-full h-full object-cover object-center"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
+            <div key={service.id} className="service-card group overflow-hidden">
+              <div className="flex items-start justify-between mb-4">
+                <div className="service-icon text-primary">
+                  {service.icon}
                 </div>
-              )}
-              <div className="service-icon mb-4">
-                {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">
+              <h3 className="text-lg font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
                 {isRtl ? service.title.ar : service.title.en}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-muted-foreground text-sm mb-5">
                 {isRtl ? service.description.ar : service.description.en}
               </p>
-              <ul className="feature-list">
+              <ul className="space-y-2">
                 {service.features.map((feature, index) => (
-                  <li key={index}>
-                    <Check className="text-green-500" size={18} />
-                    <span>{isRtl ? feature.ar : feature.en}</span>
+                  <li key={index} className="flex items-center gap-2">
+                    <Check className="text-primary flex-shrink-0" size={16} />
+                    <span className="text-sm text-foreground">{isRtl ? feature.ar : feature.en}</span>
                   </li>
                 ))}
               </ul>

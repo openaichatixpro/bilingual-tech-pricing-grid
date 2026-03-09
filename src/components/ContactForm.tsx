@@ -51,23 +51,23 @@ const ContactForm: React.FC = () => {
   };
   
   return (
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-4">
-        <h2 className={`section-title text-center ${isRtl ? 'font-arabic' : 'font-english'}`}>
-          {t("Contact Us", "اتصل بنا")}
+        <h2 className="section-title text-center mb-4">
+          {t("Get in Touch", "تواصل معنا")}
         </h2>
-        <p className="section-subtitle text-center">
+        <p className="section-subtitle text-center mb-12">
           {t(
-            "Have questions about our services? Send us a message!",
-            "هل لديك أسئلة حول خدماتنا؟ أرسل لنا رسالة!"
+            "Have questions? We're here to help!",
+            "هل لديك أسئلة؟ نحن هنا للمساعدة!"
           )}
         </p>
         
-        <div className="max-w-lg mx-auto mt-8 bg-white rounded-xl shadow-sm p-6 border">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="max-w-xl mx-auto bg-card rounded-lg border border-border p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                {t("Name", "الاسم")}
+              <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+                {t("Your Name", "اسمك")}
               </label>
               <Input
                 id="name"
@@ -76,11 +76,12 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 placeholder={t("Your name", "اسمك")}
+                className="h-10"
               />
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                 {t("Email", "البريد الإلكتروني")}
               </label>
               <Input
@@ -90,12 +91,13 @@ const ContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder={t("Your email address", "عنوان بريدك الإلكتروني")}
+                placeholder={t("your@email.com", "بريدك@email.com")}
+                className="h-10"
               />
             </div>
             
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
                 {t("Subject", "الموضوع")}
               </label>
               <Input
@@ -104,12 +106,13 @@ const ContactForm: React.FC = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                placeholder={t("Message subject", "موضوع الرسالة")}
+                placeholder={t("What's this about?", "ما موضوع الرسالة؟")}
+                className="h-10"
               />
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
                 {t("Message", "الرسالة")}
               </label>
               <Textarea
@@ -118,14 +121,15 @@ const ContactForm: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                placeholder={t("Your message", "رسالتك")}
+                placeholder={t("Your message here...", "رسالتك هنا...")}
                 rows={5}
+                className="resize-none"
               />
             </div>
             
             <Button 
               type="submit" 
-              className="w-full cta-button"
+              className="w-full font-semibold h-11"
               disabled={isSubmitting}
             >
               {isSubmitting ? 
@@ -135,26 +139,26 @@ const ContactForm: React.FC = () => {
             </Button>
           </form>
           
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-sm text-gray-600 mb-2">
-              {t("Or contact us directly:", "أو اتصل بنا مباشرة:")}
+          <div className="mt-8 pt-8 border-t border-border">
+            <p className="text-sm font-semibold text-foreground mb-4">
+              {t("Other ways to reach us:", "طرق أخرى للتواصل:")}
             </p>
-            <div className="space-y-2">
-              <p className="text-sm">
-                <strong>{t("Email:", "البريد الإلكتروني:")}</strong>{" "}
-                <a href="mailto:ahmedmokireldin@gmail.com" className="text-tech-blue hover:underline">
+            <div className="space-y-3">
+              <p className="text-sm text-foreground">
+                <span className="font-semibold text-primary">Email: </span>
+                <a href="mailto:ahmedmokireldin@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                   ahmedmokireldin@gmail.com
                 </a>
               </p>
-              <p className="text-sm">
-                <strong>{t("Phone:", "الهاتف:")}</strong>{" "}
-                <a href="tel:+201004101309" className="text-tech-blue hover:underline">
+              <p className="text-sm text-foreground">
+                <span className="font-semibold text-primary">Phone: </span>
+                <a href="tel:+201004101309" className="text-muted-foreground hover:text-primary transition-colors">
                   +201004101309
                 </a>
               </p>
-              <p className="text-sm">
-                <strong>{t("WhatsApp:", "واتساب:")}</strong>{" "}
-                <a href="https://wa.me/201006334062" target="_blank" rel="noopener noreferrer" className="text-tech-blue hover:underline">
+              <p className="text-sm text-foreground">
+                <span className="font-semibold text-primary">WhatsApp: </span>
+                <a href="https://wa.me/201006334062" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                   +201006334062
                 </a>
               </p>

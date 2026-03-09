@@ -34,36 +34,32 @@ const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/10 py-20 md:py-28">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl" />
-
+    <section className="relative overflow-hidden bg-background py-24 md:py-32">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Globe size={16} />
-            <span>{t("Based in Egypt • Serving the Gulf & Beyond", "مقرنا مصر • نخدم الخليج والعالم")}</span>
+        <div className="max-w-5xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-secondary text-foreground px-3 py-1 rounded-full text-xs font-semibold mb-6">
+            <Globe size={14} />
+            <span>{t("Egypt • Serving the Gulf & Beyond", "مصر • خدمة الخليج والعالم")}</span>
           </div>
 
-          <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight ${isRtl ? "font-arabic" : "font-english"}`}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight text-balance">
             {t(
-              "Smart Automation Solutions for Your Business",
-              "حلول أتمتة ذكية لأعمالك"
+              "Automate Your Business with AI",
+              "أتمتة أعمالك بالذكاء الاصطناعي"
             )}
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed text-balance">
             {t(
-              "We specialize in CRM automation systems using N8N and Make, WhatsApp customer service platforms, and comprehensive digital solutions. Trusted by 30+ companies across Saudi Arabia, UAE, Oman, and the Gulf region.",
-              "نتخصص في أنظمة أتمتة CRM باستخدام N8N و Make، ومنصات واتساب لخدمة العملاء، وحلول رقمية شاملة. موثوق بنا من قبل أكثر من 30 شركة في السعودية والإمارات وعُمان ومنطقة الخليج."
+              "Smart CRM automation, WhatsApp integration, and custom digital solutions. Trusted by 30+ companies.",
+              "أتمتة CRM ذكية، تكامل واتساب، وحلول رقمية مخصصة. موثوق به من قبل +30 شركة."
             )}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 rounded-lg"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               {t("Get Started", "ابدأ الآن")}
@@ -71,21 +67,21 @@ const HeroSection: React.FC = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/5 text-lg px-8 py-6 rounded-xl"
+              className="border-border text-foreground hover:bg-secondary font-semibold px-8 py-6 rounded-lg"
               onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
             >
-              {t("Our Services", "خدماتنا")}
+              {t("Learn More", "تعرف أكثر")}
             </Button>
           </div>
 
           {/* Highlight pills */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {highlights.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2.5 bg-card border border-border/60 shadow-sm rounded-xl px-5 py-3 transition-all hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5"
+                className="flex items-center gap-2.5 bg-secondary border border-border rounded-lg px-4 py-3 transition-all hover:border-primary/50"
               >
-                <span className="text-primary">{item.icon}</span>
+                <span className="text-primary flex-shrink-0">{item.icon}</span>
                 <span className="font-medium text-foreground text-sm">
                   {isRtl ? item.label.ar : item.label.en}
                 </span>

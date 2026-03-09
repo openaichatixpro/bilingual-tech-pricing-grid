@@ -8,38 +8,56 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-tech-dark text-white py-8">
+    <footer className="bg-secondary border-t border-border py-12 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
               <img src={logo} alt="Tech Services Logo" className="h-8 w-8 object-contain" />
-              <span className="font-bold">{t("Ahmed Mo Kireldin", "أحمد محمد كيرالدين")}</span>
+              <span className="font-bold text-foreground">{t("Ahmed Mo", "أحمد محمد")}</span>
             </div>
+            <p className="text-sm text-muted-foreground">{t("Smart automation solutions for businesses", "حلول أتمتة ذكية للشركات")}</p>
           </div>
           
           <div>
-            <ul className="flex gap-6">
+            <h4 className="font-semibold text-foreground mb-4">{t("Navigation", "الملاحة")}</h4>
+            <ul className="space-y-2">
               <li>
-                <a href="#services" className="hover:text-tech-blue transition-colors">
+                <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t("Services", "الخدمات")}
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-tech-blue transition-colors">
+                <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t("Pricing", "الأسعار")}
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-tech-blue transition-colors">
+                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t("Contact", "اتصل بنا")}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">{t("Get in Touch", "تواصل معنا")}</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="mailto:ahmedmokireldin@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t("Email", "البريد الإلكتروني")}
+                </a>
+              </li>
+              <li>
+                <a href="tel:+201004101309" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t("Phone", "الهاتف")}
                 </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-border/20 mt-6 pt-6 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
           <p>
             &copy; {currentYear} {t("Ahmed Mo Kireldin. All rights reserved.", "أحمد محمد كيرالدين. جميع الحقوق محفوظة.")}
           </p>

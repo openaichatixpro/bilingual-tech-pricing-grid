@@ -157,31 +157,31 @@ const PricingSection: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-16 bg-white">
+    <section id="pricing" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className={`section-title text-center ${isRtl ? 'font-arabic' : 'font-english'}`}>
+        <h2 className="section-title text-center mb-4">
           {t("Pricing Plans", "خطط الأسعار")}
         </h2>
-        <p className="section-subtitle text-center">
+        <p className="section-subtitle text-center mb-12">
           {t(
-            "Transparent pricing options to meet your business needs",
-            "خيارات أسعار شفافة لتلبية احتياجات عملك"
+            "Transparent pricing for every business size",
+            "أسعار شفافة لكل حجم عمل"
           )}
         </p>
 
-        <div className="flex justify-center mb-10">
-          <div className="bg-gray-100 p-1 rounded-full inline-flex">
+        <div className="flex justify-center mb-12">
+          <div className="bg-secondary p-1 rounded-lg inline-flex border border-border">
             <button
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                showAnnual ? 'bg-tech-blue text-white' : 'text-gray-700'
+              className={`px-6 py-2 rounded-md text-sm font-semibold transition-all ${
+                showAnnual ? 'bg-primary text-primary-foreground' : 'text-foreground'
               }`}
               onClick={() => setShowAnnual(true)}
             >
               {t("Annual", "سنوي")}
             </button>
             <button
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                !showAnnual ? 'bg-tech-blue text-white' : 'text-gray-700'
+              className={`px-6 py-2 rounded-md text-sm font-semibold transition-all ${
+                !showAnnual ? 'bg-primary text-primary-foreground' : 'text-foreground'
               }`}
               onClick={() => setShowAnnual(false)}
             >
@@ -190,115 +190,98 @@ const PricingSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingPlans.map((plan) => (
             <div 
               key={plan.id} 
-              className={`price-card animate-scale-in ${
-                plan.highlight ? 'border-tech-blue' : ''
+              className={`price-card relative transition-all hover:shadow-xl ${
+                plan.highlight ? 'border-primary md:transform md:scale-105' : ''
               }`}
             >
               {plan.highlight && (
-                <div className="absolute top-0 right-0 bg-tech-blue text-white py-1 px-4 text-sm">
-                  {t("Popular", "الأكثر شيوعاً")}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground py-1 px-3 text-xs font-bold rounded-full">
+                  {t("Most Popular", "الأكثر شهرة")}
                 </div>
               )}
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="text-2xl font-bold mb-2 text-foreground">
                 {isRtl ? plan.name.ar : plan.name.en}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-muted-foreground text-sm mb-6">
                 {isRtl ? plan.description.ar : plan.description.en}
               </p>
-              <div className="mb-6">
-                <div className="text-3xl font-bold text-tech-blue">
+              <div className="mb-8 pb-8 border-b border-border">
+                <div className="text-4xl font-bold text-primary">
                   ${typeof plan.price.usd === "number" ? plan.price.usd.toLocaleString() : plan.price.usd}
                 </div>
-                <div className="text-gray-500">
+                <div className="text-sm text-muted-foreground mt-2">
                   {plan.price.local}
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                  <li key={index} className="flex items-start gap-3">
                     {feature.included ? (
-                      <Check className="text-green-500 mt-1 flex-shrink-0" size={18} />
+                      <Check className="text-primary mt-0.5 flex-shrink-0" size={18} />
                     ) : (
-                      <X className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                      <X className="text-muted-foreground mt-0.5 flex-shrink-0" size={18} />
                     )}
-                    <span className={feature.included ? "" : "text-gray-400"}>
+                    <span className={`text-sm ${feature.included ? 'text-foreground' : 'text-muted-foreground'}`}>
                       {isRtl ? feature.ar : feature.en}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <a 
                   href="https://wa.me/201006334062" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="cta-button flex items-center justify-center gap-2"
+                  className="cta-button flex items-center justify-center gap-2 font-semibold"
                 >
-                  <MessageSquare size={18} />
-                  <span>{t("Contact on WhatsApp", "تواصل على واتساب")}</span>
+                  <MessageSquare size={16} />
+                  <span>{t("Contact on WhatsApp", "واتساب")}</span>
                 </a>
                 <a 
                   href="mailto:ahmedmokireldin@gmail.com" 
-                  className="secondary-button text-center"
+                  className="secondary-button text-center font-semibold"
                 >
-                  {t("Email Inquiry", "استفسار عبر البريد")}
+                  {t("Email", "بريد")}
                 </a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16">
-          <h3 className={`text-2xl font-bold mb-6 text-center ${isRtl ? 'font-arabic' : 'font-english'}`}>
-            {t("Calculate WhatsApp Message Costs", "حساب تكاليف رسائل واتساب")}
+        <div className="mt-20">
+          <h3 className="text-3xl font-bold mb-8 text-center">
+            {t("WhatsApp Message Cost Calculator", "حاسبة تكاليف رسائل واتساب")}
           </h3>
           <div className="max-w-2xl mx-auto">
             <MessageCalculator />
             
-            <div className="mt-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                <Link size={18} className="text-tech-blue" />
-                {t("Understanding WhatsApp Message Types", "فهم أنواع رسائل واتساب")}
+            <div className="mt-10 bg-secondary border border-border p-8 rounded-lg">
+              <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-foreground">
+                <Link size={18} className="text-primary" />
+                {t("Message Type Guide", "دليل أنواع الرسائل")}
               </h4>
               
-              <p className="mb-4">
+              <p className="text-muted-foreground mb-6">
                 {t(
-                  "Different message types have different pricing and features. Learn more about the differences between User-Initiated, Business-Initiated, and Service messages.",
-                  "تختلف أنواع الرسائل من حيث الأسعار والميزات. تعرف على المزيد حول الاختلافات بين الرسائل التي يبدأها المستخدم والرسائل التي تبدأها الشركة ورسائل الخدمة."
+                  "WhatsApp has different pricing models for different message types. Understanding these helps optimize your costs.",
+                  "لدى واتساب نماذج أسعار مختلفة لأنواع رسائل مختلفة. يساعد فهم هذه في تحسين تكاليفك."
                 )}
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="bg-white p-4 rounded border border-gray-200">
-                  <img 
-                    src="https://scontent.fcai19-6.fna.fbcdn.net/v/t39.2365-6/387103807_709767617086680_8758572233270544545_n.png?_nc_cat=104&ccb=1-7&_nc_sid=14755e&_nc_ohc=HD2PEzKUkDcAX8h6XoA&_nc_ht=scontent.fcai19-6.fna&oh=00_AfCV5YCxGAv2_2SA7rXYH-E329JXRdX-6Jg3UvxI4zY3Qw&oe=66023858" 
-                    alt="WhatsApp Message Types" 
-                    className="w-full h-auto rounded" 
-                  />
-                </div>
-                <div className="bg-white p-4 rounded border border-gray-200">
-                  <img 
-                    src="https://scontent.fcai19-6.fna.fbcdn.net/v/t39.2365-6/387084293_304701432261242_4716256922159419997_n.png?_nc_cat=110&ccb=1-7&_nc_sid=14755e&_nc_ohc=vRyXPP2MF-AAX8g-UXv&_nc_ht=scontent.fcai19-6.fna&oh=00_AfC6DIXDVYKzx5eutZApc2DK2Tmes9wQzCiIVvW-NOecow&oe=66035493" 
-                    alt="WhatsApp Conversation Types" 
-                    className="w-full h-auto rounded" 
-                  />
-                </div>
-              </div>
-              
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-6">
                 <a 
                   href="https://www.facebook.com/business/help/213629561949441" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-tech-blue hover:underline flex items-center gap-2"
+                  className="text-primary hover:text-primary/80 font-semibold flex items-center gap-2 transition-colors"
                 >
-                  <span>{t("Learn more about WhatsApp Business API pricing", "تعرف على المزيد حول أسعار واجهة برمجة تطبيقات WhatsApp Business")}</span>
+                  <span>{t("View WhatsApp Pricing Guide", "عرض دليل أسعار واتساب")}</span>
                   <ArrowRight size={16} />
                 </a>
               </div>
