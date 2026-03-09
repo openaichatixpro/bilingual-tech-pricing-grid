@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import logo from "@/assets/logo.png";
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -12,8 +11,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <img src={logo} alt="Tech Services Logo" className="h-8 w-8 object-contain" />
+            <div className="mb-2">
               <span className="font-bold text-foreground">{t("Ahmed Mo", "أحمد محمد")}</span>
             </div>
             <p className="text-sm text-muted-foreground">{t("Smart automation solutions for businesses", "حلول أتمتة ذكية للشركات")}</p>
